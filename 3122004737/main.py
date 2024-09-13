@@ -4,6 +4,7 @@ import jieba
 import re
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+import cProfile
 
 # 读取文件内容
 def read_file(file_path):
@@ -54,9 +55,11 @@ if __name__ == "__main__":
         sys.exit(1)
 
     # 从命令行获取路径
-    orig_file_path = sys.argv[1]
-    plagiarized_file_path = sys.argv[2]
-    output_file_path = sys.argv[3]
+    orig_path = sys.argv[1]
+    plagiarized_path = sys.argv[2]
+    output_path = sys.argv[3]
 
     # 执行查重检测
-    main(orig_file_path, plagiarized_file_path, output_file_path)
+    main(orig_path, plagiarized_path, output_path)
+    cProfile.run("main(orig_path, plagiarized_path, output_path)", filename="performance_analysis_result")
+
