@@ -5,7 +5,6 @@ import re
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-
 # 读取文件内容
 def read_file(file_path):
     try:
