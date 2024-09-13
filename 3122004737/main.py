@@ -6,7 +6,6 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import cProfile
 
-
 # 读取文件内容
 def read_file(file_path):
     """
