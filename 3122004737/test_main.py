@@ -65,5 +65,6 @@ def test_long_text_processing():
     assert isinstance(result, str)
     assert len(result) > 0  # 检查处理后的文本不为空
 
+
 if __name__ == '__main__':
     pytest.main(['-vs', 'test_main.py'])
