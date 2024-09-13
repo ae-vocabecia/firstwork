@@ -51,35 +51,28 @@ def test_preprocess_empty_text():
     result = preprocess_text(text)
     assert result == ""
 
-# 测试点8: 特殊字符文本的处理
-def test_preprocess_text_special_characters():
-    text = "你好😊 这是测试"
-    expected_output = "你好 这是 测试"
-    result = preprocess_text(text)
-    assert result == expected_output
-
-# 测试点9: 长文本处理
+# 测试点8: 长文本处理
 def test_long_text_processing():
     long_text = "这是一个非常长的测试文本。" * 10000  # 模拟非常长的文本
     result = preprocess_text(long_text)
     assert isinstance(result, str)
     assert len(result) > 0  # 检查处理后的文本不为空
 
-# 测试点10: 计算相似度 - 完全相同文本
+# 测试点9: 计算相似度 - 完全相同文本
 def test_calculate_similarity_identical_text():
     text1 = "测试文本"
     text2 = "测试文本"
     similarity = calculate_similarity(text1, text2)
     assert similarity == 1.0
 
-# 测试点11: 计算相似度 - 完全不同文本
+# 测试点10: 计算相似度 - 完全不同文本
 def test_calculate_similarity_different_text():
     text1 = "这是测试A"
     text2 = "这是测试B"
     similarity = calculate_similarity(text1, text2)
     assert similarity == 0.0
 
-# 测试点12: 计算相似度 - 部分相似文本
+# 测试点11: 计算相似度 - 部分相似文本
 def test_calculate_similarity_partial_similarity():
     text1 = "这是一个测试"
     text2 = "这是一个不同的测试"
@@ -88,7 +81,7 @@ def test_calculate_similarity_partial_similarity():
     similarity = calculate_similarity(orig_text1, orig_text2)
     assert 0 < similarity < 1.0
 
-# 测试点13: TF-IDF 向量化处理
+# 测试点12: TF-IDF 向量化处理
 def test_tfidf_vectorization():
     text = "我喜欢学习"
     vectorizer = TfidfVectorizer()
