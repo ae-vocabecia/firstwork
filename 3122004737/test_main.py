@@ -31,7 +31,39 @@ def test_write_output_file_permission_error():
         with pytest.raises(PermissionError):
             write_output("output.txt", 0.85)
 
+# 测试点5: 文本预处理 - 去除标点符号
+def test_preprocess_text_remove_punctuation():
+    text = "这是一个测试，包含标点符号！"
+    expected_output = "这是 一个 测试 包含 标点符号"
+    result = preprocess_text(text)
+    assert result == expected_output
 
+# 测试点6: 文本预处理 - 分词功能
+def test_preprocess_text_segmentation():
+    text = "这是一个测试"
+    expected_output = "这是 一个 测试"
+    result = preprocess_text(text)
+    assert result == expected_output
+
+# 测试点7: 文本预处理 - 空白文本处理
+def test_preprocess_empty_text():
+    text = ""
+    result = preprocess_text(text)
+    assert result == ""
+
+# 测试点8: 特殊字符文本的处理
+def test_preprocess_text_special_characters():
+    text = "你好😊 这是测试"
+    expected_output = "你好 这是 测试"
+    result = preprocess_text(text)
+    assert result == expected_output
+
+# 测试点9: 长文本处理
+def test_long_text_processing():
+    long_text = "这是一个非常长的测试文本。" * 10000  # 模拟非常长的文本
+    result = preprocess_text(long_text)
+    assert isinstance(result, str)
+    assert len(result) > 0  # 检查处理后的文本不为空
 
 if __name__ == '__main__':
     pytest.main(['-vs', 'test_main.py'])
